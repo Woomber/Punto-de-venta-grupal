@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace puntoVentaWebService
+{
+    /// <summary>
+    /// Summary description for puntoVenta
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class puntoVenta : System.Web.Services.WebService
+    {
+        puntoventa7a1Entities DB;
+        public puntoVenta()
+        {
+            DB = new puntoventa7a1Entities();
+        }
+        [WebMethod]
+        public List<Clientes> readClientes()
+        {
+            return DB.Clientes.ToList();
+        }
+    }
+}

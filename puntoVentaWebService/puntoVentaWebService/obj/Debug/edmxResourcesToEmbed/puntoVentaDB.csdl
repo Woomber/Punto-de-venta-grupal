@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="puntoventa7a1Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="puntoventa7a1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="puntoventa7a1Model.Clientes" />
+    <EntitySet Name="Facturas" EntityType="puntoventa7a1Model.Facturas" />
+    <EntitySet Name="Productos" EntityType="puntoventa7a1Model.Productos" />
+    <EntitySet Name="sysdiagrams" EntityType="puntoventa7a1Model.sysdiagrams" />
+    <EntitySet Name="Ventas" EntityType="puntoventa7a1Model.Ventas" />
+    <AssociationSet Name="FK_Facturas_Clientes" Association="puntoventa7a1Model.FK_Facturas_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Facturas" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ventas_Facturas" Association="puntoventa7a1Model.FK_Ventas_Facturas">
+      <End Role="Facturas" EntitySet="Facturas" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ventas_Productos" Association="puntoventa7a1Model.FK_Ventas_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="apellidos" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="direccion" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="correo" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Facturas" Relationship="puntoventa7a1Model.FK_Facturas_Clientes" FromRole="Clientes" ToRole="Facturas" />
+  </EntityType>
+  <EntityType Name="Facturas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="precio_total" Type="Double" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Clientes" Relationship="puntoventa7a1Model.FK_Facturas_Clientes" FromRole="Facturas" ToRole="Clientes" />
+    <NavigationProperty Name="Ventas" Relationship="puntoventa7a1Model.FK_Ventas_Facturas" FromRole="Facturas" ToRole="Ventas" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="precio" Type="Double" Nullable="false" />
+    <Property Name="stock" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Ventas" Relationship="puntoventa7a1Model.FK_Ventas_Productos" FromRole="Productos" ToRole="Ventas" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_factura" Type="Int32" Nullable="false" />
+    <Property Name="id_producto" Type="Int32" Nullable="false" />
+    <Property Name="precio" Type="Double" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Facturas" Relationship="puntoventa7a1Model.FK_Ventas_Facturas" FromRole="Ventas" ToRole="Facturas" />
+    <NavigationProperty Name="Productos" Relationship="puntoventa7a1Model.FK_Ventas_Productos" FromRole="Ventas" ToRole="Productos" />
+  </EntityType>
+  <Association Name="FK_Facturas_Clientes">
+    <End Role="Clientes" Type="puntoventa7a1Model.Clientes" Multiplicity="1" />
+    <End Role="Facturas" Type="puntoventa7a1Model.Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Facturas">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ventas_Facturas">
+    <End Role="Facturas" Type="puntoventa7a1Model.Facturas" Multiplicity="1" />
+    <End Role="Ventas" Type="puntoventa7a1Model.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facturas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="id_factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ventas_Productos">
+    <End Role="Productos" Type="puntoventa7a1Model.Productos" Multiplicity="1" />
+    <End Role="Ventas" Type="puntoventa7a1Model.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

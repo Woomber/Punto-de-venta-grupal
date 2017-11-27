@@ -1,0 +1,7 @@
+F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\bin\puntoVentaWebService.dll
+F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\bin\puntoVentaWebService.pdb
+F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\bin\EntityFramework.dll
+F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\bin\EntityFramework.xml
+F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\obj\Debug\puntoVentaWebService.csprojResolveAssemblyReference.cache
+F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\obj\Debug\puntoVentaWebService.dll
+F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\obj\Debug\puntoVentaWebService.pdb

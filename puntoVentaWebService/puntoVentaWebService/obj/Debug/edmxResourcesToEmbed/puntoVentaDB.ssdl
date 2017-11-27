@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="puntoventa7a1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="puntoventa7a1ModelStoreContainer">
+    <EntitySet Name="Clientes" EntityType="puntoventa7a1Model.Store.Clientes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Facturas" EntityType="puntoventa7a1Model.Store.Facturas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Productos" EntityType="puntoventa7a1Model.Store.Productos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="puntoventa7a1Model.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ventas" EntityType="puntoventa7a1Model.Store.Ventas" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Facturas_Clientes" Association="puntoventa7a1Model.Store.FK_Facturas_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Facturas" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ventas_Facturas" Association="puntoventa7a1Model.Store.FK_Ventas_Facturas">
+      <End Role="Facturas" EntitySet="Facturas" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ventas_Productos" Association="puntoventa7a1Model.Store.FK_Ventas_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nombres" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="apellidos" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" Nullable="false" MaxLength="60" />
+    <Property Name="correo" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="Facturas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id_cliente" Type="int" Nullable="false" />
+    <Property Name="precio_total" Type="float" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="precio" Type="float" Nullable="false" />
+    <Property Name="stock" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id_factura" Type="int" Nullable="false" />
+    <Property Name="id_producto" Type="int" Nullable="false" />
+    <Property Name="precio" Type="float" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Facturas_Clientes">
+    <End Role="Clientes" Type="puntoventa7a1Model.Store.Clientes" Multiplicity="1" />
+    <End Role="Facturas" Type="puntoventa7a1Model.Store.Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Facturas">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ventas_Facturas">
+    <End Role="Facturas" Type="puntoventa7a1Model.Store.Facturas" Multiplicity="1" />
+    <End Role="Ventas" Type="puntoventa7a1Model.Store.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facturas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="id_factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ventas_Productos">
+    <End Role="Productos" Type="puntoventa7a1Model.Store.Productos" Multiplicity="1" />
+    <End Role="Ventas" Type="puntoventa7a1Model.Store.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
