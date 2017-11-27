@@ -73,9 +73,9 @@ namespace puntoVentaWebService
        
        
         [WebMethod]
-        public bool createProductos(string nombre, double precio, int stock, string descripcion)
+        public bool createProductos(int id, string nombre, double precio, int stock, string descripcion)
         {
-            Productos nuevoProducto = new Productos { nombre = nombre, precio = precio, stock = stock, descripcion = descripcion };
+            Productos nuevoProducto = new Productos {id=id, nombre = nombre, precio = precio, stock = stock, descripcion = descripcion };
             DB.Productos.Add(nuevoProducto);
             if (DB.SaveChanges() > 0)
             {
