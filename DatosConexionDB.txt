@@ -1,0 +1,10 @@
+
+Local
+Server: LAPTOP-Q0GP187D\SQLEXPRESS
+Username: Usr1
+Password: 123
+
+Server
+den1.mssql4.gear.host
+puntoventa7a1
+Ih2Xl!!2vFmi

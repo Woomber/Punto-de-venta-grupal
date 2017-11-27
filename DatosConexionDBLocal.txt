@@ -1,3 +1,0 @@
-Server: LAPTOP-Q0GP187D\SQLEXPRESS
-Username: Usr1
-Password: 123
