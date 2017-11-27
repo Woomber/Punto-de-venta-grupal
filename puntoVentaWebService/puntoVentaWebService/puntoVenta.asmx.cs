@@ -26,5 +26,56 @@ namespace puntoVentaWebService
         {
             return DB.Clientes.ToList();
         }
+       
+       
+        [WebMethod]
+        public bool createProductos(string nombre, double precio, int stock, string descripcion)
+        {
+            Productos nuevoProducto = new Productos { nombre = nombre, precio = precio, stock = stock, descripcion = descripcion };
+            DB.Productos.Add(nuevoProducto);
+            if (DB.SaveChanges() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        [WebMethod]
+        public int updateProductos(int id, string nombre, double precio, int stock, string descripcion)
+        {
+            try
+            {
+                var producto = DB.Productos.Where(x => x.id == id).FirstOrDefault();
+                producto.nombre = nombre;
+                producto.precio = precio;
+                producto.stock = stock;
+                producto.descripcion = descripcion;
+                return DB.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+        [WebMethod]
+        public int deleteProductos(int id)
+        {
+            try
+            {
+                var producto = DB.Productos.Where(x => x.id == id).FirstOrDefault();
+                DB.Productos.Remove(producto);
+                return DB.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+
+        }
+        [WebMethod]
+        public List<Productos> readProductos()
+        {
+            return DB.Productos.ToList();
+        }
+       
     }
 }
