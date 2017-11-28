@@ -20,7 +20,7 @@ namespace puntoVentaWebService
         public double precio { get; set; }
         public int cantidad { get; set; }
     
-        public virtual Facturas Facturas { get; set; }
-        public virtual Productos Productos { get; set; }
+        public Facturas Facturas { get; set; }
+        public Productos Productos { get; set; }
     }
 }

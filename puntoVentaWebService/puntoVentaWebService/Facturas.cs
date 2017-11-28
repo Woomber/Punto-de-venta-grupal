@@ -22,9 +22,11 @@ namespace puntoVentaWebService
         public int id { get; set; }
         public int id_cliente { get; set; }
         public double precio_total { get; set; }
-        public System.DateTime fecha { get; set; }
+        public int dia { get; set; }
+        public int mes { get; set; }
+        public int anio { get; set; }
     
-        public virtual Clientes Clientes { get; set; }
+        public Clientes Clientes { get; set; }
         public List<Ventas> Ventas { get; set; }
     }
 }

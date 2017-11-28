@@ -16,10 +16,10 @@ namespace puntoVentaWebService
     //[System.Web.Script.Services.ScriptService]
     public class puntoVenta : System.Web.Services.WebService
     {
-        PuntoVenta_GEntities DB;
+        puntoventa7a1Entities DB;
         public puntoVenta()
         {
-            DB = new PuntoVenta_GEntities();
+            DB = new puntoventa7a1Entities();
         }
 
         [WebMethod]
@@ -36,7 +36,7 @@ namespace puntoVentaWebService
         [WebMethod]
         public List<Facturas> readFactura()
         {
-            return DB.Facturas.ToList<Facturas>();
+            return DB.Facturas.ToList();
         }
         [WebMethod]
         public int updateFactura(int id, int id_cliente, float precio_total, int dia, int mes, int anio)
@@ -85,7 +85,7 @@ namespace puntoVentaWebService
         [WebMethod]
         public List<Ventas> readVenta()
         {
-            return DB.Ventas.ToList<Ventas>();
+            return DB.Ventas.ToList();
         }
         [WebMethod]
         public int updateVenta(int id, int id_factura, int id_producto, float precio, int cantidad)

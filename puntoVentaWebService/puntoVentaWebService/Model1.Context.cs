@@ -13,10 +13,10 @@ namespace puntoVentaWebService
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class puntoventa7a1Entities : DbContext
+    public partial class PuntoVenta_GEntities : DbContext
     {
-        public puntoventa7a1Entities()
-            : base("name=puntoventa7a1Entities")
+        public PuntoVenta_GEntities()
+            : base("name=PuntoVenta_GEntities")
         {
         }
     
@@ -28,7 +28,6 @@ namespace puntoVentaWebService
         public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Facturas> Facturas { get; set; }
         public DbSet<Productos> Productos { get; set; }
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Ventas> Ventas { get; set; }
     }
 }
