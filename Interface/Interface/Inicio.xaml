@@ -1,0 +1,43 @@
+﻿<Window x:Class="Interface.MainWindow"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="16"
+        TextElement.FontFamily="Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Title="My First App in WPF" Height="470" Width="425" WindowStartupLocation="CenterScreen" AllowsTransparency="true" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
+            <Grid>
+                <materialDesign:ColorZone Mode="PrimaryDark">
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Width="30" Height="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Button_Click_1">
+                            <materialDesign:PackIcon Kind="WindowClose"/>
+                        </Button>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" Background="Transparent">
+            <materialDesign:ColorZone Mode="PrimaryMid">
+                <TextBlock FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="30 50 0 10"><Run Language="es-mx" Text="INICIO"/></TextBlock>
+            </materialDesign:ColorZone>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Vertical" Margin="30 10" VerticalAlignment="Center">
+                <Button x:Name="Registro" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Registro" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10"/>
+                <Button x:Name="Productos" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Productos" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10"/>
+                <Button x:Name="Historial" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Historial" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10"/>
+                <Button x:Name="Venta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Venta" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
