@@ -28,7 +28,7 @@
         </Border>
         <Grid Grid.Row="1" Background="Transparent">
             <materialDesign:ColorZone Mode="PrimaryMid">
-                <TextBlock Text="Formulario de Registro" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="30 50 0 10"></TextBlock>
+                <TextBlock Text="Formulario de Registro" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 50 0 10"></TextBlock>
             </materialDesign:ColorZone>
         </Grid>
         <Grid Grid.Row="2">
