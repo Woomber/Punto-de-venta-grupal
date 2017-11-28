@@ -32,7 +32,11 @@ namespace Interface
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Hide();
+
+            Inicio frm = new Inicio();
+
+            frm.Show();
         }
     }
 }

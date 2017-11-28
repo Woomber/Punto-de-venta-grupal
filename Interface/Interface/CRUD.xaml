@@ -32,9 +32,9 @@
         </Grid>
         <Grid Grid.Row="2">
             <StackPanel Orientation="Vertical" Margin="30 70">
-                <Button Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Insertar" Width="120" HorizontalAlignment="Center" Margin="0 17"/>
-                <Button Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Modificar" Width="120" HorizontalAlignment="Center" Margin="0 17"/>
-                <Button Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Eliminar" Width="120" HorizontalAlignment="Center" Margin="0 17"/>
+                <Button Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Insertar" Width="120" HorizontalAlignment="Center" Margin="0 17" Click="Button_Click"/>
+                <Button Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Modificar" Width="120" HorizontalAlignment="Center" Margin="0 17" Click="Button_Click_2"/>
+                <Button Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Eliminar" Width="120" HorizontalAlignment="Center" Margin="0 17" Click="Button_Click_3"/>
             </StackPanel>
         </Grid>
     </Grid>

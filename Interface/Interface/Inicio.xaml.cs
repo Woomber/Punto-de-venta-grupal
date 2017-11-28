@@ -32,6 +32,42 @@ namespace Interface
         {
             Application.Current.Shutdown();
         }
+
+        private void Registro_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            MainWindow frm = new MainWindow();
+
+            frm.Show();
+        }
+
+        private void Productos_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            CRUD frm = new CRUD();
+
+            frm.Show();
+        }
+
+        private void Historial_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            Historial frm = new Historial();
+
+            frm.Show();
+        }
+
+        private void Venta_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            Ventas frm = new Ventas();
+
+            frm.Show();
+        }
     }
 
 }

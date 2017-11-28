@@ -75,10 +75,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Factura.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Historial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,9 +97,6 @@
     </Compile>
     <Compile Include="Eliminar.xaml.cs">
       <DependentUpon>Eliminar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Factura.xaml.cs">
-      <DependentUpon>Factura.xaml</DependentUpon>
     </Compile>
     <Compile Include="Historial.xaml.cs">
       <DependentUpon>Historial.xaml</DependentUpon>

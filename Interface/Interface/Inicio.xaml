@@ -33,10 +33,10 @@
         </Grid>
         <Grid Grid.Row="2">
             <StackPanel Orientation="Vertical" Margin="30 10" VerticalAlignment="Center">
-                <Button x:Name="Registro" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Registro" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10"/>
-                <Button x:Name="Productos" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Productos" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10"/>
-                <Button x:Name="Historial" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Historial" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10"/>
-                <Button x:Name="Venta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Venta" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10"/>
+                <Button x:Name="Registro" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Registro" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10" Click="Registro_Click"/>
+                <Button x:Name="Productos" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Productos" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10" Click="Productos_Click"/>
+                <Button x:Name="Historial" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Historial" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10" Click="Historial_Click"/>
+                <Button x:Name="Venta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Venta" Width="120" HorizontalAlignment="Center" Margin="122,10,123,10" Click="Venta_Click"/>
             </StackPanel>
         </Grid>
     </Grid>
