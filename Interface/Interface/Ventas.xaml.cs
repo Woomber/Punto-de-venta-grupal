@@ -32,7 +32,7 @@ namespace Interface
         {
             this.Hide();
 
-            Inicio frm = new Inicio();
+            Facturas frm = new Facturas();
 
             frm.Show();
         }

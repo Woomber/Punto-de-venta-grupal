@@ -23,5 +23,28 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void Productos_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            Ventas frm = new Ventas();
+
+            frm.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            Inicio frm = new Inicio();
+
+            frm.Show();
+        }
+        private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
     }
 }
