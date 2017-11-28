@@ -61,6 +61,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CRUD.xaml.cs">
+      <DependentUpon>CRUD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas.xaml.cs">
+      <DependentUpon>Ventas.xaml</DependentUpon>
+    </Compile>
+    <Page Include="CRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Eliminar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,6 +119,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Modificar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
