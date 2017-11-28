@@ -64,7 +64,7 @@ namespace Interface
         {
             this.Hide();
 
-            Ventas frm = new Ventas();
+            Facturas frm = new Facturas();
 
             frm.Show();
         }
