@@ -22,6 +22,100 @@ namespace puntoVentaWebService
             DB = new puntoventa7a1Entities();
         }
 
+        [WebMethod]
+        public bool createFactura(int id, int id_cliente, float precio_total, System.DateTime fecha)
+        {
+            Facturas nuevaFactura = new Facturas { id = id, id_cliente = id_cliente, precio_total = precio_total, fecha = fecha };
+            DB.Facturas.Add(nuevaFactura);
+            if (DB.SaveChanges() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        [WebMethod]
+        public List<Facturas> readFactura()
+        {
+            return DB.Facturas.ToList();
+        }
+        [WebMethod]
+        public int updateFactura(int id, int id_cliente, float precio_total, System.DateTime fecha)
+        {
+            try
+            {
+                var factura = DB.Facturas.Where(x => x.id == id).FirstOrDefault();
+                factura.id_cliente = id_cliente;
+                factura.precio_total = precio_total;
+                factura.fecha = fecha;
+                return DB.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+        [WebMethod]
+        public int deleteFactura(int id)
+        {
+            try
+            {
+                var factura = DB.Facturas.Where(x => x.id == id).FirstOrDefault();
+                DB.Facturas.Remove(factura);
+                return DB.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
+        [WebMethod]
+        public bool createVenta(int id, int id_factura, int id_producto, float precio, int cantidad)
+        {
+            Ventas nuevaVenta = new Ventas { id = id, id_factura = id_factura, id_producto = id_producto, precio = precio, cantidad = cantidad };
+            DB.Ventas.Add(nuevaVenta);
+            if (DB.SaveChanges() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        [WebMethod]
+        public List<Ventas> readVenta()
+        {
+            return DB.Ventas.ToList();
+        }
+        [WebMethod]
+        public int updateVenta(int id, int id_factura, int id_producto, float precio, int cantidad)
+        {
+            try
+            {
+                var venta = DB.Ventas.Where(x => x.id == id).FirstOrDefault();
+                venta.id_factura = id_factura;
+                venta.id_producto = id_producto;
+                venta.precio = precio;
+                venta.cantidad = cantidad;
+                return DB.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+        [WebMethod]
+        public int deleteVenta(int id)
+        {
+            try
+            {
+                var venta = DB.Ventas.Where(x => x.id == id).FirstOrDefault();
+                DB.Ventas.Remove(venta);
+                return DB.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
 
         [WebMethod]
         public bool createClientes(int id, string nombres, string apellidos, string direccion, string correo)

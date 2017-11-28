@@ -5,3 +5,10 @@ F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\bin\EntityFramework.xml
 F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\obj\Debug\puntoVentaWebService.csprojResolveAssemblyReference.cache
 F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\obj\Debug\puntoVentaWebService.dll
 F:\PuntoVenta\puntoVentaWebService\puntoVentaWebService\obj\Debug\puntoVentaWebService.pdb
+C:\Users\chion\Documents\GitHub\Punto-de-venta-grupal\puntoVentaWebService\puntoVentaWebService\bin\puntoVentaWebService.dll
+C:\Users\chion\Documents\GitHub\Punto-de-venta-grupal\puntoVentaWebService\puntoVentaWebService\bin\puntoVentaWebService.pdb
+C:\Users\chion\Documents\GitHub\Punto-de-venta-grupal\puntoVentaWebService\puntoVentaWebService\bin\EntityFramework.dll
+C:\Users\chion\Documents\GitHub\Punto-de-venta-grupal\puntoVentaWebService\puntoVentaWebService\bin\EntityFramework.xml
+C:\Users\chion\Documents\GitHub\Punto-de-venta-grupal\puntoVentaWebService\puntoVentaWebService\obj\Debug\puntoVentaWebService.csprojResolveAssemblyReference.cache
+C:\Users\chion\Documents\GitHub\Punto-de-venta-grupal\puntoVentaWebService\puntoVentaWebService\obj\Debug\puntoVentaWebService.dll
+C:\Users\chion\Documents\GitHub\Punto-de-venta-grupal\puntoVentaWebService\puntoVentaWebService\obj\Debug\puntoVentaWebService.pdb
