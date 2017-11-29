@@ -77,7 +77,7 @@ namespace Interface
         {
             this.Hide();
 
-            CRUD frm = new CRUD();
+            Inicio frm = new Inicio();
 
             frm.Show();
         }
@@ -119,6 +119,9 @@ namespace Interface
 
             MessageBox.Show("Factura guardada.");
 
+            Inicio frm = new Inicio();
+
+            frm.Show();
             this.Close();
 
         }
