@@ -9,11 +9,11 @@ namespace puntoVentaWebService
     /// <summary>
     /// Summary description for puntoVenta
     /// </summary>
-    [WebService(Namespace = "http://tempuri.org/")]
+    [WebService(Namespace = "http://puntoventa7a.gear.host/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    //[System.Web.Script.Services.ScriptService]
+    [System.Web.Script.Services.ScriptService]
     public class puntoVenta : System.Web.Services.WebService
     {
         PuntoVenta_GEntities DB;
@@ -25,14 +25,18 @@ namespace puntoVentaWebService
         [WebMethod]
         public int createFactura( int id_cliente, float precio_total, int dia, int mes, int anio)
         {
-            var ultimaFact = DB.Facturas.ToList().LastOrDefault();
-            Facturas nuevaFactura = new Facturas { id = ultimaFact.id+1, id_cliente = id_cliente, precio_total = precio_total, anio=anio,mes=mes,dia=dia };
-            DB.Facturas.Add(nuevaFactura);
-            if (DB.SaveChanges() > 0)
+            try
             {
-                return ultimaFact.id+1;
+                var ultimaFact = DB.Facturas.ToList().LastOrDefault();
+                Facturas nuevaFactura = new Facturas { id = ultimaFact.id + 1, id_cliente = id_cliente, precio_total = precio_total, anio = anio, mes = mes, dia = dia };
+                DB.Facturas.Add(nuevaFactura);
+                DB.SaveChanges();
+                return ultimaFact.id + 1;
             }
-            return -1;
+            catch (Exception)
+            {
+                return -1;
+            }
         }
         [WebMethod]
         public List<Facturas> readFactura()
@@ -75,14 +79,21 @@ namespace puntoVentaWebService
         [WebMethod]
         public int createVenta(int id_factura, int id_producto, float precio, int cantidad)
         {
-            var ultimaVenta = DB.Ventas.ToList().LastOrDefault();
-            Ventas nuevaVenta = new Ventas { id = ultimaVenta.id+1, id_factura = id_factura, id_producto = id_producto, precio = precio, cantidad = cantidad };
-            DB.Ventas.Add(nuevaVenta);
-            if (DB.SaveChanges() > 0)
+            try
             {
-                return ultimaVenta.id+1;
+                var ultimaVenta = DB.Ventas.ToList().LastOrDefault();
+                Ventas nuevaVenta = new Ventas { id = ultimaVenta.id + 1, id_factura = id_factura, id_producto = id_producto, precio = precio, cantidad = cantidad };
+                DB.Ventas.Add(nuevaVenta);
+                if (DB.SaveChanges() > 0)
+                {
+                    return ultimaVenta.id + 1;
+                }
+                return -1;
             }
-            return -1;
+            catch (Exception)
+            {
+                return -1;
+            }
         }
         [WebMethod]
         public List<Ventas> readVenta()
@@ -124,14 +135,21 @@ namespace puntoVentaWebService
         [WebMethod]
         public int createClientes(string nombres, string apellidos, string direccion, string correo)
         {
-            var ultimoCliente = DB.Clientes.ToList().LastOrDefault();
-            Clientes nuevoCliente = new Clientes {id=ultimoCliente.id+1, nombres=nombres, apellidos=apellidos, direccion=direccion, correo=correo };
-            DB.Clientes.Add(nuevoCliente);
-            if (DB.SaveChanges() > 0)
+            try
             {
-                return ultimoCliente.id+1;
+                var ultimoCliente = DB.Clientes.ToList().LastOrDefault();
+                Clientes nuevoCliente = new Clientes { id = ultimoCliente.id + 1, nombres = nombres, apellidos = apellidos, direccion = direccion, correo = correo };
+                DB.Clientes.Add(nuevoCliente);
+                if (DB.SaveChanges() > 0)
+                {
+                    return ultimoCliente.id + 1;
+                }
+                return -1;
             }
-            return -1;
+            catch (Exception)
+            {
+                return -1;
+            }
         }
         [WebMethod]
         public List<Clientes> readClientes()
@@ -174,14 +192,21 @@ namespace puntoVentaWebService
         [WebMethod]
         public int createProductos(string nombre, double precio, int stock, string descripcion)
         {
-            var ultimoProducto = DB.Productos.ToList().LastOrDefault();
-            Productos nuevoProducto = new Productos {id= ultimoProducto.id+1, nombre = nombre, precio = precio, stock = stock, descripcion = descripcion };
-            DB.Productos.Add(nuevoProducto);
-            if (DB.SaveChanges() > 0)
+            try
             {
-                return ultimoProducto.id+1;
+                var ultimoProducto = DB.Productos.ToList().LastOrDefault();
+                Productos nuevoProducto = new Productos { id = ultimoProducto.id + 1, nombre = nombre, precio = precio, stock = stock, descripcion = descripcion };
+                DB.Productos.Add(nuevoProducto);
+                if (DB.SaveChanges() > 0)
+                {
+                    return ultimoProducto.id + 1;
+                }
+                return -1;
             }
-            return -1;
+            catch (Exception)
+            {
+                return -1;
+            }
         }
         [WebMethod]
         public int updateProductos(int id, string nombre, double precio, int stock, string descripcion)
