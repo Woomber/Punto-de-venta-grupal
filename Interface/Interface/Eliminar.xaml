@@ -36,10 +36,11 @@
                     <TextBlock Text="Borrar" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 17" HorizontalAlignment="Center">
-                    <DataGrid></DataGrid>
+                    <DataGrid x:Name="productos" Width="383"></DataGrid>
                 </StackPanel>
             </StackPanel>
             <Button x:Name="eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="311,278,0,0" VerticalAlignment="Top" Width="84" Click="button_Click"/>
         </Grid>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="196,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
     </Grid>
 </Window>

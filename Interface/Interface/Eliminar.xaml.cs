@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Interface.WebService;
 
 namespace Interface
 {
@@ -19,9 +20,15 @@ namespace Interface
     /// </summary>
     public partial class Eliminar : Window
     {
+        puntoVentaSoapClient client;
+
         public Eliminar()
         {
             InitializeComponent();
+
+            client = new puntoVentaSoapClient();
+
+            productos.ItemsSource = client.readProductos();
         }
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
@@ -39,6 +46,17 @@ namespace Interface
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Productos eliminado = productos.SelectedItem as Productos;
+
+                client.deleteProductos(eliminado.id);
+                MessageBox.Show("Eliminado.");
+            }
+           catch(Exception ex)
+            {
+
+            }
 
         }
     }
