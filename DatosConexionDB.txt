@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> PuntoVenta/WPF
 Local
 Server: LAPTOP-Q0GP187D\SQLEXPRESS
 Username: Usr1
