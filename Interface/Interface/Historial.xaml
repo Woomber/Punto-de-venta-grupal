@@ -20,6 +20,6 @@
                 </Button>
             </StackPanel>
         </materialDesign:ColorZone>
-        <DataGrid HorizontalAlignment="Left" Margin="23,144,0,0" VerticalAlignment="Top" Height="232" Width="375"/>
+        <DataGrid x:Name="historial" HorizontalAlignment="Left" Margin="23,144,0,0" VerticalAlignment="Top" Height="316" Width="375"/>
     </Grid>
 </Window>

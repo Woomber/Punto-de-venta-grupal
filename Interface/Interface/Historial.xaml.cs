@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Interface.WebService;
 
 namespace Interface
 {
@@ -19,9 +20,26 @@ namespace Interface
     /// </summary>
     public partial class Historial : Window
     {
+
+        puntoVentaSoapClient client;
+
         public Historial()
         {
             InitializeComponent();
+            client = new puntoVentaSoapClient();
+
+            historial.ItemsSource = from facturas in client.readFactura()
+                                    join clientes in client.readClientes()
+                                    on facturas.id_cliente equals clientes.id
+                                    select new
+                                    {
+                                        ID = facturas.id,
+                                        Apellidos = clientes.apellidos,
+                                        Nombres = clientes.nombres,
+                                        Dia = facturas.dia,
+                                        Mes = facturas.mes,
+                                        Año = facturas.anio
+                                    };
         }
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
