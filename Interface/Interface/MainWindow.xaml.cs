@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Interface.WebService;
 
 namespace Interface
 {
@@ -20,8 +21,10 @@ namespace Interface
     /// </summary>
     public partial class MainWindow : Window
     {
+        puntoVentaSoapClient soap;
         public MainWindow()
         {
+            soap = new puntoVentaSoapClient();
             InitializeComponent();
         }
 
@@ -37,6 +40,17 @@ namespace Interface
             Inicio frm = new Inicio();
 
             frm.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            soap.createClientes(txt_nombrem.Text, txt_apellido.Text, txt_direccion.Text, txt_correo.Text);
+            Inicio frm = new Inicio();
+
+            frm.Show();
+            this.Close();
+
+
         }
     }
 }

@@ -36,6 +36,7 @@ namespace Interface
                                         ID = facturas.id,
                                         Apellidos = clientes.apellidos,
                                         Nombres = clientes.nombres,
+                                        Total = facturas.precio_total,
                                         Dia = facturas.dia,
                                         Mes = facturas.mes,
                                         Año = facturas.anio
