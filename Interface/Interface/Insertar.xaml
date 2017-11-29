@@ -47,7 +47,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0 7" HorizontalAlignment="Center">
                     <TextBox x:Name="txt_descripcion" Width="300"  materialDesign:HintAssist.Hint="Descripcion" materialDesign:HintAssist.IsFloating="True"/>
                 </StackPanel>
-                <Button Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Añadir" Width="120" HorizontalAlignment="Center" Margin="0 17"/>
+                <Button Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Añadir" Width="120" HorizontalAlignment="Center" Margin="0 17" Click="Button_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

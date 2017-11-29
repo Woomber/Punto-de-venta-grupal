@@ -33,10 +33,10 @@
         <Grid Grid.Row="2">
             <StackPanel Orientation="Vertical" Margin="30,30">
                 <StackPanel Orientation="Horizontal" Margin="0 7" HorizontalAlignment="Center">
-                    <TextBlock Text="Borrar" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Text="Borrar" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 17" HorizontalAlignment="Center">
-                    <DataGrid x:Name="productos" Width="383"></DataGrid>
+                    <DataGrid x:Name="productos" Width="361" VerticalScrollBarVisibility="Visible" Height="176"/>
                 </StackPanel>
             </StackPanel>
             <Button x:Name="eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="311,278,0,0" VerticalAlignment="Top" Width="84" Click="button_Click"/>
