@@ -22,6 +22,8 @@ namespace Interface
     {
         puntoVentaSoapClient client;
 
+        List<Productos> misProductos;
+
         public Eliminar()
         {
             InitializeComponent();
@@ -47,7 +49,8 @@ namespace Interface
 
         void actualizar()
         {
-            var linq = from elemento in client.readProductos()
+            misProductos = client.readProductos().ToList();
+            var linq = from elemento in misProductos
                        select new
                        {
                            Nombre = elemento.nombre,
@@ -60,21 +63,18 @@ namespace Interface
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Productos eliminado = productos.SelectedItem as Productos;
+                int eliminado = productos.SelectedIndex;
 
-                if (eliminado == null) return;
+                if (eliminado == -1) return;
 
-                client.deleteProductos(eliminado.id);
-                MessageBox.Show("Eliminado.");
+               
+
+                if(client.deleteProductos(misProductos[eliminado].id) == -1)
+                    MessageBox.Show("No es posible eliminar este producto");
+                else
+                    MessageBox.Show("Eliminado.");
                 actualizar();
                 
-            }
-           catch(Exception ex)
-            {
-
-            }
 
         }
     }
