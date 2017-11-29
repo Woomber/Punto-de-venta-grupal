@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://puntoventa7a.gear.host/puntoVenta.asmx?wsdl" docRef="http://puntoventa7a.gear.host/puntoVenta.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://puntoventa7a.gear.host/puntoVenta.asmx" xmlns:q1="http://puntoventa7a.gear.host/" binding="q1:puntoVentaSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://puntoventa7a.gear.host/puntoVenta.asmx" xmlns:q2="http://puntoventa7a.gear.host/" binding="q2:puntoVentaSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

@@ -33,10 +33,11 @@
         <Grid Grid.Row="2">
             <StackPanel Orientation="Vertical" Margin="30 10" VerticalAlignment="Center">
                 <ComboBox x:Name="txt_producto" Width="350" Margin="0 20 0 20" materialDesign:HintAssist.Hint="Selecciona un cliente:"></ComboBox>
-                <Button x:Name="Registro" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Confirmar cliente" Width="160" HorizontalAlignment="Center" Margin="122,10,123,10"/>
-                <Button x:Name="Productos" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Agregar venta" Width="160" HorizontalAlignment="Center" Margin="122,10,123,10" Click="Productos_Click"/>
-                <Button x:Name="Historial" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="OK" Width="160" HorizontalAlignment="Center" Margin="122,10,123,10"/>
+                <Button x:Name="Registro" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Confirmar cliente" Width="160" HorizontalAlignment="Center" Margin="122,10,123,10" Click="Registro_Click"/>
+                <Button x:Name="Productos" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Agregar venta" Width="160" HorizontalAlignment="Center" Margin="122,10,123,10" Click="Productos_Click" IsEnabled="False"/>
+                <Button x:Name="Historial" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="OK" Width="160" HorizontalAlignment="Center" Margin="122,10,123,10" Click="Historial_Click"/>
                 <DataGrid x:Name="facturas"></DataGrid>
+                <Button x:Name="Actualizar" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Actualizar" Width="160" HorizontalAlignment="Center" Margin="102,10,103,10" Click="Actualizar_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://puntoventa7a.gear.host/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://puntoventa7a.gear.host/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://puntoventa7a.gear.host/">
+      <s:element name="createFactura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_cliente" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio_total" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="dia" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mes" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="anio" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createFacturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="createFacturaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="readFactura">
+        <s:complexType />
+      </s:element>
+      <s:element name="readFacturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="readFacturaResult" type="tns:ArrayOfFacturas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFacturas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Facturas" nillable="true" type="tns:Facturas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Facturas">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="id_cliente" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="precio_total" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="dia" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="mes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="anio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Clientes" type="tns:Clientes" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ventas" type="tns:ArrayOfVentas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Clientes">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Facturas" type="tns:ArrayOfFacturas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVentas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ventas" nillable="true" type="tns:Ventas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ventas">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="id_factura" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="id_producto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="cantidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Facturas" type="tns:Facturas" />
+          <s:element minOccurs="0" maxOccurs="1" name="Productos" type="tns:Productos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Productos">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="stock" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ventas" type="tns:ArrayOfVentas" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateFactura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_cliente" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio_total" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="dia" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mes" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="anio" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateFacturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateFacturaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteFactura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteFacturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteFacturaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createVenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_factura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_producto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="cantidad" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createVentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="createVentaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="readVenta">
+        <s:complexType />
+      </s:element>
+      <s:element name="readVentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="readVentaResult" type="tns:ArrayOfVentas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateVenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_factura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_producto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="cantidad" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateVentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateVentaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteVenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteVentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteVentaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createClientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellidos" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="createClientesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="readClientes">
+        <s:complexType />
+      </s:element>
+      <s:element name="readClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="readClientesResult" type="tns:ArrayOfClientes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClientes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Clientes" nillable="true" type="tns:Clientes" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateClientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellidos" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateClientesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteClientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteClientesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createProductos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="stock" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createProductosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="createProductosResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateProductos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="stock" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateProductosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateProductosResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteProductos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteProductosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteProductosResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="readProductos">
+        <s:complexType />
+      </s:element>
+      <s:element name="readProductosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="readProductosResult" type="tns:ArrayOfProductos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProductos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Productos" nillable="true" type="tns:Productos" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="createFacturaSoapIn">
+    <wsdl:part name="parameters" element="tns:createFactura" />
+  </wsdl:message>
+  <wsdl:message name="createFacturaSoapOut">
+    <wsdl:part name="parameters" element="tns:createFacturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="readFacturaSoapIn">
+    <wsdl:part name="parameters" element="tns:readFactura" />
+  </wsdl:message>
+  <wsdl:message name="readFacturaSoapOut">
+    <wsdl:part name="parameters" element="tns:readFacturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateFacturaSoapIn">
+    <wsdl:part name="parameters" element="tns:updateFactura" />
+  </wsdl:message>
+  <wsdl:message name="updateFacturaSoapOut">
+    <wsdl:part name="parameters" element="tns:updateFacturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteFacturaSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteFactura" />
+  </wsdl:message>
+  <wsdl:message name="deleteFacturaSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteFacturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="createVentaSoapIn">
+    <wsdl:part name="parameters" element="tns:createVenta" />
+  </wsdl:message>
+  <wsdl:message name="createVentaSoapOut">
+    <wsdl:part name="parameters" element="tns:createVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="readVentaSoapIn">
+    <wsdl:part name="parameters" element="tns:readVenta" />
+  </wsdl:message>
+  <wsdl:message name="readVentaSoapOut">
+    <wsdl:part name="parameters" element="tns:readVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateVentaSoapIn">
+    <wsdl:part name="parameters" element="tns:updateVenta" />
+  </wsdl:message>
+  <wsdl:message name="updateVentaSoapOut">
+    <wsdl:part name="parameters" element="tns:updateVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteVentaSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteVenta" />
+  </wsdl:message>
+  <wsdl:message name="deleteVentaSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="createClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:createClientes" />
+  </wsdl:message>
+  <wsdl:message name="createClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:createClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="readClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:readClientes" />
+  </wsdl:message>
+  <wsdl:message name="readClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:readClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:updateClientes" />
+  </wsdl:message>
+  <wsdl:message name="updateClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:updateClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteClientes" />
+  </wsdl:message>
+  <wsdl:message name="deleteClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="createProductosSoapIn">
+    <wsdl:part name="parameters" element="tns:createProductos" />
+  </wsdl:message>
+  <wsdl:message name="createProductosSoapOut">
+    <wsdl:part name="parameters" element="tns:createProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateProductosSoapIn">
+    <wsdl:part name="parameters" element="tns:updateProductos" />
+  </wsdl:message>
+  <wsdl:message name="updateProductosSoapOut">
+    <wsdl:part name="parameters" element="tns:updateProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteProductosSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteProductos" />
+  </wsdl:message>
+  <wsdl:message name="deleteProductosSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="readProductosSoapIn">
+    <wsdl:part name="parameters" element="tns:readProductos" />
+  </wsdl:message>
+  <wsdl:message name="readProductosSoapOut">
+    <wsdl:part name="parameters" element="tns:readProductosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="puntoVentaSoap">
+    <wsdl:operation name="createFactura">
+      <wsdl:input message="tns:createFacturaSoapIn" />
+      <wsdl:output message="tns:createFacturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="readFactura">
+      <wsdl:input message="tns:readFacturaSoapIn" />
+      <wsdl:output message="tns:readFacturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateFactura">
+      <wsdl:input message="tns:updateFacturaSoapIn" />
+      <wsdl:output message="tns:updateFacturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteFactura">
+      <wsdl:input message="tns:deleteFacturaSoapIn" />
+      <wsdl:output message="tns:deleteFacturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createVenta">
+      <wsdl:input message="tns:createVentaSoapIn" />
+      <wsdl:output message="tns:createVentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="readVenta">
+      <wsdl:input message="tns:readVentaSoapIn" />
+      <wsdl:output message="tns:readVentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateVenta">
+      <wsdl:input message="tns:updateVentaSoapIn" />
+      <wsdl:output message="tns:updateVentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteVenta">
+      <wsdl:input message="tns:deleteVentaSoapIn" />
+      <wsdl:output message="tns:deleteVentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createClientes">
+      <wsdl:input message="tns:createClientesSoapIn" />
+      <wsdl:output message="tns:createClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="readClientes">
+      <wsdl:input message="tns:readClientesSoapIn" />
+      <wsdl:output message="tns:readClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateClientes">
+      <wsdl:input message="tns:updateClientesSoapIn" />
+      <wsdl:output message="tns:updateClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteClientes">
+      <wsdl:input message="tns:deleteClientesSoapIn" />
+      <wsdl:output message="tns:deleteClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createProductos">
+      <wsdl:input message="tns:createProductosSoapIn" />
+      <wsdl:output message="tns:createProductosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateProductos">
+      <wsdl:input message="tns:updateProductosSoapIn" />
+      <wsdl:output message="tns:updateProductosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteProductos">
+      <wsdl:input message="tns:deleteProductosSoapIn" />
+      <wsdl:output message="tns:deleteProductosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="readProductos">
+      <wsdl:input message="tns:readProductosSoapIn" />
+      <wsdl:output message="tns:readProductosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="puntoVentaSoap" type="tns:puntoVentaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createFactura">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/createFactura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readFactura">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/readFactura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateFactura">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/updateFactura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteFactura">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/deleteFactura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createVenta">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/createVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readVenta">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/readVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateVenta">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/updateVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteVenta">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/deleteVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createClientes">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/createClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readClientes">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/readClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateClientes">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/updateClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteClientes">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/deleteClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createProductos">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/createProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProductos">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/updateProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProductos">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/deleteProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readProductos">
+      <soap:operation soapAction="http://puntoventa7a.gear.host/readProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="puntoVentaSoap12" type="tns:puntoVentaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createFactura">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/createFactura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readFactura">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/readFactura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateFactura">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/updateFactura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteFactura">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/deleteFactura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createVenta">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/createVenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readVenta">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/readVenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateVenta">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/updateVenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteVenta">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/deleteVenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createClientes">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/createClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readClientes">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/readClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateClientes">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/updateClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteClientes">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/deleteClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createProductos">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/createProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProductos">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/updateProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProductos">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/deleteProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readProductos">
+      <soap12:operation soapAction="http://puntoventa7a.gear.host/readProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="puntoVenta">
+    <wsdl:port name="puntoVentaSoap" binding="tns:puntoVentaSoap">
+      <soap:address location="http://puntoventa7a.gear.host/puntoVenta.asmx" />
+    </wsdl:port>
+    <wsdl:port name="puntoVentaSoap12" binding="tns:puntoVentaSoap12">
+      <soap12:address location="http://puntoventa7a.gear.host/puntoVenta.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
